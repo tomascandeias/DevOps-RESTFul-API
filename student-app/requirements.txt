@@ -7,4 +7,6 @@ swagger-ui-bundle >= 0.0.2
 flask==2.2.3
 six~=1.16.0
 tinydb>=4.7.1
+
 pymongo>=4.6.0
+python-dotenv>=1.0.0
