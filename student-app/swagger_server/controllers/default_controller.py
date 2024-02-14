@@ -6,6 +6,7 @@ from swagger_server import util
 
 from swagger_server.service.student_service import *
 
+
 def add_student(body=None):  # noqa: E501
     """Add a new student
 

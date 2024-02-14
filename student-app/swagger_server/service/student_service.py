@@ -18,7 +18,8 @@ dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
 load_dotenv(dotenv_path)
 print(dotenv_path)
 # MongoDB setup
-url = "mongodb://localhost:27017"
+# client = MongoClient("mongodb://userName:password@<mongodb cointaner name or ip>/sampledb")
+url = "mongodb://devops-restful-api-mongo-1"
 
 mongo_client = MongoClient(url)
 db = mongo_client["student_db"]  # Use (or create) a database named "student_database"
