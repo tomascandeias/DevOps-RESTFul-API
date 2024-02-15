@@ -1,8 +1,8 @@
 name: Builb Test and push
 on: [push]
 env:
-  IMAGE_NAME: student_service
-  REPO_NAME: tlcandeias
+  IMAGE_NAME: student_service-1
+  REPO_NAME: devops-restful-api-
 
 jobs:
   build:
