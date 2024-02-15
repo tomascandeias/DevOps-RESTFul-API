@@ -42,11 +42,7 @@ def add(student=None):
 
 
 def get_by_id(student_id=None, subject=None):
-    query = {}
-    if student_id is not None:
-        query['student_id'] = student_id
-
-    student = student_collection.find_one(query)
+    student = student_collection.find_one({'student_id': student_id})
 
     if student is None:
         return 'not found', 404
@@ -56,9 +52,6 @@ def get_by_id(student_id=None, subject=None):
 
 
 def delete(student_id=None):
-    if student_id is None:
-        return None
-
     student = student_collection.find_one({'student_id': student_id})
     if student is None:
         return 'not found', 404
