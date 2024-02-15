@@ -5,6 +5,13 @@ env:
   REPO_NAME: tlcandeias
 
 jobs:
+  mongodb-service:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
   build:
     runs-on: ubuntu-latest
     steps:
