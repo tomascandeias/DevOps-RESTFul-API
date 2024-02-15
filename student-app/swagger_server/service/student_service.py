@@ -27,9 +27,6 @@ student_collection = db["students"]  # Use (or create) a collection named "stude
 
 
 def add(student=None):
-    if student is None:
-        return "No student data provided"
-
     existing_id = student_collection.find_one({'student_id': student.student_id})
     existing_names = student_collection.find_one({'first_name': student.first_name, 'last_name': student.last_name})
 
