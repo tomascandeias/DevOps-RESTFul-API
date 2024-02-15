@@ -16,6 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Run MongoDB
+      run: |
+        docker run -d --name mongodb -p 27017:27017 mongo:latest
+        sleep 10 # Wait for MongoDB to fully start
     - name: Build docker
       run: |
         docker build ./student-app -t $REPO_NAME/$IMAGE_NAME
