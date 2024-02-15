@@ -9,17 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run MongoDB
+    - name: docker-compose
       run: |
-        docker run -d --name mongodb -p 27017:27017 mongo:latest
-        sleep 10 # Wait for MongoDB to fully start
-    - name: Build docker
-      run: |
-        docker build ./student-app -t $REPO_NAME/$IMAGE_NAME
-    - name: run docker
-      run: |
-        docker run -d -e 8080:8080 -host=172.17.0.2 $REPO_NAME/$IMAGE_NAME:latest && \
-          docker ps && sleep 5
+        docker-compose up --build
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@v1
