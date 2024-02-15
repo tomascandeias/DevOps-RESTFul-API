@@ -12,18 +12,12 @@ student_db = TinyDB(db_file_path)
 '''
 
 from pymongo import MongoClient
-from dotenv import load_dotenv
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
-load_dotenv(dotenv_path)
-print(dotenv_path)
-# MongoDB setup
-# client = MongoClient("mongodb://userName:password@<mongodb cointaner name or ip>/sampledb")
-url = "mongodb://devops-restful-api-mongo-1"
 
+url = os.getenv("MONGO_URI")
 mongo_client = MongoClient(url)
-db = mongo_client["student_db"]  # Use (or create) a database named "student_database"
-student_collection = db["students"]  # Use (or create) a collection named "students"
+db = mongo_client["student_db"]
+student_collection = db["students"]
 
 
 def add(student=None):
