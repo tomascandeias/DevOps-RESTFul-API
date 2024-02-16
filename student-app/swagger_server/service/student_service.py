@@ -13,14 +13,19 @@ student_db = TinyDB(db_file_path)
 
 from pymongo import MongoClient
 
-
 url = os.getenv("MONGO_URI")
 mongo_client = MongoClient(url)
 db = mongo_client["student_db"]
 student_collection = db["students"]
+idx = 0
 
 
 def add(student=None):
+    global idx
+
+    if student.student_id is None:
+        student.student_id = idx
+
     existing_id = student_collection.find_one({'student_id': student.student_id})
     existing_names = student_collection.find_one({'first_name': student.first_name, 'last_name': student.last_name})
 
@@ -29,7 +34,8 @@ def add(student=None):
     else:
         print("Adding student...")
         insert_result = student_collection.insert_one(json.loads(json.dumps(student, cls=JSONEncoder)))
-        return f"Student added with ID: {insert_result.inserted_id}"
+        idx += 1
+        return f"Student added with ID: {student.student_id}"
 
 
 def get_by_id(student_id=None, subject=None):
@@ -53,4 +59,3 @@ def delete(student_id=None):
         return 'not found', 404
 
     return student_id
-
