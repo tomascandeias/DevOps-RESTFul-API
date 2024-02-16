@@ -97,7 +97,6 @@ components:
     Student:
       required:
       - first_name
-      - gradeRecords
       - last_name
       type: object
       properties:

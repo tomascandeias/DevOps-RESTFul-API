@@ -30,7 +30,7 @@ def add(student=None):
     existing_names = student_collection.find_one({'first_name': student.first_name, 'last_name': student.last_name})
 
     if existing_id is not None or existing_names is not None:
-        return f"Student {student.first_name} {student.last_name} already exists."
+        return f"Already exists", 409
     else:
         print("Adding student...")
         insert_result = student_collection.insert_one(json.loads(json.dumps(student, cls=JSONEncoder)))
