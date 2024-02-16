@@ -2,7 +2,7 @@ name: Builb Test and push
 on: [push]
 env:
   IMAGE_NAME: student_service
-  REPO_NAME: devops-restful-api
+  REPO_NAME: tlcandeias
 
 jobs:
   build:
@@ -35,4 +35,4 @@ jobs:
 
     - name: Push image to docker hub Container Registry
       run: | 
-          docker push $REPO_NAME_$IMAGE_NAME
+          docker push $REPO_NAME/$IMAGE_NAME
