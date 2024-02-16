@@ -3,6 +3,7 @@ services:
   student_service:
     build: ./student-app
     restart: unless-stopped
+    image: tlcandeias/student_service
     depends_on:
       - mongo
     environment:
