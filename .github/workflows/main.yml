@@ -12,12 +12,6 @@ jobs:
     - name: docker-compose
       run: |
         docker-compose up --build -d
-    - name: Find the built image ID
-      id: docker_image_id
-      run: echo "::set-output name=image_id::$(docker images -q student_service)"
-    - name: Tag the Docker image
-      run: |
-        docker tag ${{ steps.docker_image_id.outputs.image_id }} $REPO_NAME/$IMAGE_NAME:latest
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@v1
