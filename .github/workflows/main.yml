@@ -12,6 +12,9 @@ jobs:
     - name: docker-compose
       run: |
         docker-compose up --build -d
+    - name: Tag the Docker image
+      run: |
+        docker tag $IMAGE_NAME $REPO_NAME/$IMAGE_NAME:latest
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@v1
@@ -33,4 +36,4 @@ jobs:
 
     - name: Push image to docker hub Container Registry
       run: | 
-          docker push $REPO_NAME/$IMAGE_NAME
+          docker push $REPO_NAME/$IMAGE_NAME:latest
