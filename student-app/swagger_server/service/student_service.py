@@ -35,7 +35,7 @@ def add(student=None):
         print("Adding student...")
         insert_result = student_collection.insert_one(json.loads(json.dumps(student, cls=JSONEncoder)))
         idx += 1
-        return student
+        return student.student_id
 
 
 def get_by_id(student_id=None, subject=None):
