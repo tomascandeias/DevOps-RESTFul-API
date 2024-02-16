@@ -12,8 +12,6 @@ jobs:
     - name: docker-compose
       run: |
         docker-compose up --build -d
-    - name: List Docker images
-      run: docker images
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@v1
